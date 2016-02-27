@@ -1,0 +1,28 @@
+{
+  "name": "battlelog",
+  "authors": [
+    "Danny <daniele.calleri@gmail.com>"
+  ],
+  "description": "An instant, ready to hack blog.",
+  "main": "index.html",
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "blog"
+  ],
+  "license": "MIT",
+  "homepage": "http://dannycalleri.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "bootstrap-sass": "~3.3.6"
+  }
+}
