@@ -9,7 +9,7 @@ import { Router, Route, Link, IndexRoute } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 
 import App from './app.jsx';
-import Blog from './components/blog.jsx';
+import Blog from './pages/blog.jsx';
 
 ReactDOM.render((
     <Router history={ createBrowserHistory() }>

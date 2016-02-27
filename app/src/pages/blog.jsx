@@ -4,7 +4,7 @@
 
 import React from 'react';
 import Utils from '../battlelog/utils.jsx';
-import Post from './post.jsx';
+import Post from '../components/post.jsx';
 
 class Blog extends React.Component
 {

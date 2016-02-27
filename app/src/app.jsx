@@ -10,7 +10,7 @@ import Utils from './battlelog/utils.jsx';
 //
 import Header from './layout/header.jsx';
 import Footer from './layout/footer.jsx';
-import Blog from './components/blog.jsx';
+import Blog from './pages/blog.jsx';
 
 class App extends React.Component {
     constructor(props)
