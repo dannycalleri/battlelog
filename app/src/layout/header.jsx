@@ -23,7 +23,7 @@ class Header extends React.Component
                 <div className="container">
                     <div className="row">
                         <div className="col-xs-12">
-                            <h1>Battlelog <small>A React blog powered by GitHub gists</small></h1>
+                            <h1>Battlelog <small>A ReactJS blog powered by GitHub gists</small></h1>
                         </div>
                     </div>
                 </div>

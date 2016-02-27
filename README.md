@@ -1,36 +1,20 @@
-# battlelog
+# Battlelog
 
-Simple HTML5 blogging platform for personal use.
-No back-end: no PHP, no Node.js, no back-end needed.
-Imagine: you can deploy your Bloster to an S3 bucket and enjoy the fastness of AWS services.
+Simple HTML5 blogging platform built as an experiment using **ReactJS**, **GitHub gists**, **SASS** and **Gulp**.
 
-It works by using a few JSON indices and an .md files for storing the content of each post.
-Simple, fast, and it works like a charm.
-
-## git
-
-* GET /gists/:id - curl https://api.github.com/gists/4175331
-*
-
+It's perfect for personal use and is extremely hackable.
 
 ## Architecture
 
-index.html ->
-  **entry point!**
-  loads all index files by appending a timestamp to each of them
-  to avoid caching
+### Directory structure
 
-/bloster
-  /indices/tags.json
-  /indices/recent.json
-  /indices/index.json
-  /posts/[timestamps].md
-    /posts/20150802102655.md
+* **/src**
+    * **/battlelog** helpers and utils classes
+    * **/layout** generic layout components (header, footer, sidebar, etc)
+    * **/components** "core" components: markdown compiler, post and various widgets
+    * **/pages** all pages for the application
 
 ## Routes
 
-/ **most recent posts**
-
-/post/title **post specific route**
-
-/about **custom route**
+* **/**
+* **/post/[title]**
