@@ -11,7 +11,107 @@ h1,h2,h3,h4
     font-family: "PT Sans", sans-serif;
 }
 
+header
+{
+    h1
+    {
+        margin-bottom: 0px;
+    }
+}
+
 #main
 {
-    margin: 50px auto;
+    margin: 20px auto;
+}
+
+.post
+{
+    h1, h2, h3, h4, h5
+    {
+        &:before
+        {
+            content: '#';
+            color: #aaa;
+            position: absolute;
+            left: -20px;
+        }
+    }
+
+    header
+    {
+        font-family: "PT Sans", sans-serif;
+        color: #666;
+
+        h2
+        {
+            &:before { content: ''; }
+
+            a
+            {
+                left: -12px;
+                color: #000;
+                position: relative;
+
+                &::before,
+                &::after
+                {
+                    position: relative;
+                    opacity: 0;
+                    left:0;
+                    right:0;
+                    transition: all 0.3s ease-out;
+                }
+
+                &::before
+                {
+                    content: '{';
+                }
+
+                &::after
+                {
+                    content: '}';
+                }
+
+                &:hover
+                {
+                    color: #999; text-decoration: none;
+
+                    &::before,
+                    &::after
+                    {
+                        opacity: 1;
+                    }
+
+                    &::before
+                    {
+                        left: -5px;
+                    }
+
+                    &::after
+                    {
+                        left: 5px;
+                    }
+                }
+            }
+        }
+
+        .tags
+        {
+            margin-left: 5px;
+        }
+
+        .label
+        {
+            background-color: transparent;
+            font-size: 1em;
+            color: #666;
+            padding: 0;
+            margin-right: 5px;
+        }
+    }
+}
+
+footer
+{
+    font-family: "PT Sans", serif;
 }

@@ -19,13 +19,15 @@ class Footer extends React.Component
     render()
     {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-xs-12">
-                        <small>Copyright &copy; Danny Calleri 2016</small>
+            <footer>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-xs-12">
+                            <small>Copyright &copy; Danny Calleri 2016</small>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </footer>
         );
     }
 }

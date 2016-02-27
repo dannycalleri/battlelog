@@ -36,6 +36,7 @@ var aws = {
 
 var runSequence = require('run-sequence');
 var shell = require('gulp-shell');
+var config = require('./config.js');
 
 // ====================================================
 
@@ -138,7 +139,7 @@ gulp.task('s3-upload', function(){
     ])();
 });
 
-gulp.task('cache-blog', function(){
+gulp.task('build-index', function(){
     var posts = {};
     var postsPerTags = {};
 
@@ -199,7 +200,7 @@ gulp.task('cache-blog', function(){
     	return title;
     };
 
-    exec('curl https://api.github.com/users/dannycalleri/gists', function (err, stdout, stderr) {
+    exec('curl https://api.github.com/users/'+config.username+'/gists', function (err, stdout, stderr) {
         if(err)
         {
             cb(err);
@@ -215,14 +216,16 @@ gulp.task('cache-blog', function(){
                gist.description !== null &&
                isBlogPost(gist.description))
             {
-                var title = filterTitle(gist.description.substr(gist.description.indexOf(']')+1).trim());
+                var title = gist.description.substr(gist.description.indexOf(']')+1).trim();
+                var slug = filterTitle(title);
                 var tags = extractTags(gist.description);
 
-                posts[title] = {
+                posts[slug] = {
                     id: gist.id,
                     tags: tags,
                     date: gist.updated_at,
-                    url: gist.html_url
+                    url: gist.html_url,
+                    title: title
                 };
 
                 // building tags index
@@ -253,8 +256,15 @@ gulp.task('cache-blog', function(){
         // write tags.json
         s.pipe(source("tags.json"))
          .pipe(gulp.dest('./blog'));
-
     });
+});
+
+gulp.task('upload-index', function(){
+
+});
+
+gulp.task('update-index', function(){
+    runSequence('build-index', 'upload-index');
 });
 
 gulp.task('deploy', function() {

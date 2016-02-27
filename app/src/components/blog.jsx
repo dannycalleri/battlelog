@@ -18,14 +18,14 @@ class Blog extends React.Component
 
     componentDidMount()
     {
-        // console.log(Utils.index);
-        // console.log(Utils.tags);
+        console.log(Utils.index);
+        console.log(Utils.tags);
 
         var posts = [];
         for(var post in Utils.index)
         {
             var p = {};
-            p.title = post;
+            p.slug = post;
             for(var prop in Utils.index[post])
             {
                 p[prop] = Utils.index[post][prop];
@@ -34,7 +34,6 @@ class Blog extends React.Component
             posts.push(p);
         }
 
-        // console.log(posts);
         this.setState({
             posts: posts
         });
@@ -49,7 +48,14 @@ class Blog extends React.Component
                         {
                             this.state.posts.map(function(p,i){
                                 return (
-                                    <Post key={i} gistId={ p.id } />
+                                    <Post
+                                        key={i}
+                                        gistId={ p.id }
+                                        date={ p.date }
+                                        tags={ p.tags }
+                                        title={ p.title }
+                                        slug={ p.slug }
+                                    />
                                 );
                             })
                         }
