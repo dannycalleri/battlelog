@@ -4,18 +4,40 @@
 
 import React from 'react';
 import Utils from '../battlelog/utils.jsx';
+import Post from './post.jsx';
 
 class Blog extends React.Component
 {
     constructor(props)
     {
         super(props);
+        this.state = {
+            posts: []
+        };
     }
 
     componentDidMount()
     {
-        console.log(Utils.index);
-        console.log(Utils.tags);
+        // console.log(Utils.index);
+        // console.log(Utils.tags);
+
+        var posts = [];
+        for(var post in Utils.index)
+        {
+            var p = {};
+            p.title = post;
+            for(var prop in Utils.index[post])
+            {
+                p[prop] = Utils.index[post][prop];
+            }
+
+            posts.push(p);
+        }
+
+        // console.log(posts);
+        this.setState({
+            posts: posts
+        });
     }
 
     render()
@@ -24,7 +46,13 @@ class Blog extends React.Component
             <div id="main" className="container">
                 <div className="row">
                     <div className="col-xs-12">
-                        Blog posts
+                        {
+                            this.state.posts.map(function(p,i){
+                                return (
+                                    <Post key={i} gistId={ p.id } />
+                                );
+                            })
+                        }
                     </div>
                 </div>
             </div>
