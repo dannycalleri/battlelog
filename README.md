@@ -4,6 +4,10 @@ Simple HTML5 blogging platform built as an experiment using **ReactJS**, **GitHu
 
 It's perfect for personal use and is extremely hackable.
 
+## Install & Build
+
+Coming soon.
+
 ## Architecture
 
 ### Directory structure
