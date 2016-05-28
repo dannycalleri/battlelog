@@ -62,10 +62,10 @@ gulp.task('clean', require('del').bind(null, [paths.debugBuild, paths.distBuild]
 gulp.task('startBuilding', function(){ building = true; });
 gulp.task('default', ['clean'], function () { gulp.start('build'); });
 
-gulp.task('build', ['startBuilding', 'sass', 'js', 'html', 'images', 'fonts'], function(){});
+gulp.task('build', ['startBuilding', 'build-index', 'sass', 'js', 'html', 'images', 'fonts'], function(){});
 
 // Static Server + files watcher
-gulp.task('serve', ['sass', 'js', 'html'], function() {
+gulp.task('serve', ['build-index', 'sass', 'js', 'html'], function() {
 
     // Serve files from both ./.debug and ./app.
     // In this way I can serve all images from ./app without copying them
