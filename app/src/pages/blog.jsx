@@ -14,6 +14,8 @@ class Blog extends React.Component
         this.state = {
             posts: []
         };
+        
+        this.getPosts = this.getPosts.bind(this);
     }
 
     componentDidMount()
@@ -38,6 +40,26 @@ class Blog extends React.Component
             posts: posts
         });
     }
+    
+    getPosts(n)
+    {
+        var posts = this.state.posts;
+        n = typeof n !== "undefined" ? n : posts.length;
+        posts.slice(0,n);
+        
+        return posts.map(function(p,i){
+            return (
+                <Post
+                    key={i}
+                    gistId={ p.id }
+                    date={ p.date }
+                    tags={ p.tags }
+                    title={ p.title }
+                    slug={ p.slug }
+                />
+            );
+        });
+    }
 
     render()
     {
@@ -45,20 +67,7 @@ class Blog extends React.Component
             <div id="main" className="container">
                 <div className="row">
                     <div className="col-xs-12">
-                        {
-                            this.state.posts.map(function(p,i){
-                                return (
-                                    <Post
-                                        key={i}
-                                        gistId={ p.id }
-                                        date={ p.date }
-                                        tags={ p.tags }
-                                        title={ p.title }
-                                        slug={ p.slug }
-                                    />
-                                );
-                            })
-                        }
+                        { this.getPosts() }
                     </div>
                 </div>
             </div>

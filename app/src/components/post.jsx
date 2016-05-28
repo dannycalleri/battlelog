@@ -40,7 +40,7 @@ class Post extends React.Component
         return (
             <div className="post">
                 <header>
-                    <h2>
+                    <h2 className="post-title">
                         <a href={ this.props.slug }>{this.props.title}</a>
                     </h2>
                     <small className="date">{ moment(this.props.date).format('ll') } </small>
