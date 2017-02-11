@@ -13,7 +13,8 @@ class Post extends React.Component
     {
         super(props);
         this.state = {
-            text: ''
+            text: '',
+            loadingFinished: false
         };
     }
 
@@ -29,6 +30,7 @@ class Post extends React.Component
             }
 
             this.setState({
+                loadingFinished: true,
                 text: data
             });
 
@@ -53,7 +55,15 @@ class Post extends React.Component
                         }
                     </span>
                 </header>
-                <Markdown text={ this.state.text } />
+                
+                <span className="loading"></span>
+                
+                {
+                    this.state.loadingFinished ? 
+                            <Markdown text={ this.state.text } />
+                        :
+                            <span className="loading"></span>
+                }
             </div>
         );
     }
